@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.6"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="rentalapp.Controller.PaymentDialogController"
+      spacing="15.0" prefWidth="500.0">
+
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+    </padding>
+    <Label text="Новый платёж" styleClass="dialog-title">
+        <font>
+            <Font name="System Bold" size="20.0"/>
+        </font>
+    </Label>
+    <GridPane hgap="10.0" vgap="10.0">
+        <Label text="Договор:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="agreementCombo" GridPane.rowIndex="0" GridPane.columnIndex="1"
+                  prefWidth="300.0" promptText="Выберите договор"/>
+        <Label text="Сумма (₽):" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+        <TextField fx:id="amountField" GridPane.rowIndex="1" GridPane.columnIndex="1"
+                   prefWidth="300.0" promptText="Например: 30000"/>
+        <Label text="Дата платежа:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+        <DatePicker fx:id="datePicker" GridPane.rowIndex="2" GridPane.columnIndex="1"
+                    prefWidth="300.0"/>
+        <Label text="Тип:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="typeCombo" GridPane.rowIndex="3" GridPane.columnIndex="1"
+                  prefWidth="300.0"/>
+        <Label text="Статус:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+        <ComboBox fx:id="statusCombo" GridPane.rowIndex="4" GridPane.columnIndex="1"
+                  prefWidth="300.0"/>
+    </GridPane>
+    <HBox alignment="CENTER_RIGHT" spacing="10.0">
+        <Button text="Отмена" onAction="#handleCancel" styleClass="button-secondary"/>
+        <Button fx:id="saveButton" text="Создать" onAction="#handleCreate" styleClass="button-primary"/>
+    </HBox>
+</VBox>

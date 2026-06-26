@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<VBox xmlns="http://javafx.com/javafx/17.0.6"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="rentalapp.Controller.FinanceController"
+      spacing="15.0"
+      prefHeight="800.0" prefWidth="1200.0">
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+    </padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="20.0">
+        <Label text="Финансы" styleClass="page-title">
+            <font>
+                <Font name="System Bold" size="24.0"/>
+            </font>
+        </Label>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Отметить оплату" onAction="#handleMarkPaid" styleClass="button-success"/>
+    </HBox>
+
+    <HBox spacing="10.0" alignment="CENTER">
+        <padding>
+            <Insets top="10.0" right="10.0" bottom="10.0" left="10.0"/>
+        </padding>
+
+        <VBox styleClass="stat-widget received" alignment="CENTER" prefWidth="200.0" prefHeight="100.0">
+            <Label fx:id="receivedAmountLabel" text="0 ₽" styleClass="stat-value"/>
+            <Label text="Получено" styleClass="stat-label"/>
+        </VBox>
+
+        <VBox styleClass="stat-widget pending" alignment="CENTER" prefWidth="200.0" prefHeight="100.0">
+            <Label fx:id="pendingAmountLabel" text="0 ₽" styleClass="stat-value"/>
+            <Label text="Ожидается" styleClass="stat-label"/>
+        </VBox>
+
+        <VBox styleClass="stat-widget overdue" alignment="CENTER" prefWidth="200.0" prefHeight="100.0">
+            <Label fx:id="overdueAmountLabel" text="0 ₽" styleClass="stat-value"/>
+            <Label text="Просрочено" styleClass="stat-label"/>
+        </VBox>
+
+        <VBox styleClass="stat-widget total" alignment="CENTER" prefWidth="200.0" prefHeight="100.0">
+            <Label fx:id="totalAmountLabel" text="0 ₽" styleClass="stat-value"/>
+            <Label text="Всего" styleClass="stat-label"/>
+        </VBox>
+    </HBox>
+
+    <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <Label text="Фильтры:" styleClass="filter-label"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <DatePicker fx:id="fromDatePicker" promptText="С даты"/>
+        <Label text="-"/>
+        <DatePicker fx:id="toDatePicker" promptText="По дату"/>
+        <ComboBox fx:id="statusFilterCombo" promptText="Все статусы">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="все"/>
+                    <String fx:value="оплачено"/>
+                    <String fx:value="не оплачено"/>
+                    <String fx:value="частично"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Button text="Применить" onAction="#applyFilters" styleClass="button-filter"/>
+        <Button text="Сбросить" onAction="#resetFilters" styleClass="button-secondary"/>
+    </HBox>
+
+    <TabPane VBox.vgrow="ALWAYS">
+        <Tab text="📋Все платежи" closable="false">
+            <VBox spacing="10.0">
+                <TableView fx:id="paymentsTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+                    <columns>
+                        <TableColumn text="Дата платежа" fx:id="paymentDateColumn" prefWidth="120.0"/>
+                        <TableColumn text="Договор" fx:id="agreementColumn" prefWidth="200.0"/>
+                        <TableColumn text="Помещение" fx:id="roomColumn" prefWidth="200.0"/>
+                        <TableColumn text="Съёмщик" fx:id="tenantColumn" prefWidth="150.0"/>
+                        <TableColumn text="Сумма" fx:id="amountColumn" prefWidth="100.0"/>
+                        <TableColumn text="Статус" fx:id="statusColumn" prefWidth="120.0"/>
+                        <TableColumn text="Дата оплаты" fx:id="paidDateColumn" prefWidth="120.0"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </Tab>
+
+        <Tab text="📈Динамика доходов" closable="false">
+            <VBox spacing="15.0">
+                <padding>
+                    <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+                </padding>
+
+                <Label text="Доходы по месяцам" styleClass="chart-title">
+                    <font>
+                        <Font name="System Bold" size="18.0"/>
+                    </font>
+                </Label>
+
+                <LineChart fx:id="incomeLineChart" VBox.vgrow="ALWAYS" prefHeight="400.0">
+                    <xAxis>
+                        <CategoryAxis label="Месяц"/>
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Сумма (₽)"/>
+                    </yAxis>
+                </LineChart>
+            </VBox>
+        </Tab>
+    </TabPane>
+
+    <HBox alignment="CENTER_RIGHT" spacing="10.0">
+        <Button text="Обновить" onAction="#handleRefresh" styleClass="button-refresh"/>
+    </HBox>
+</VBox>

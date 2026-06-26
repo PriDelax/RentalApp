@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.6"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="rentalapp.Controller.TenantsManagementController"
+            prefHeight="600.0" prefWidth="900.0">
+
+    <VBox spacing="15.0" AnchorPane.topAnchor="0.0" AnchorPane.bottomAnchor="0.0"
+          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <padding>
+            <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+        </padding>
+
+        <HBox alignment="CENTER_LEFT">
+            <Label text="Съёмщики" styleClass="page-title">
+                <font>
+                    <Font name="System Bold" size="20.0"/>
+                </font>
+            </Label>
+        </HBox>
+
+        <TableView fx:id="tenantsTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+            <columns>
+                <TableColumn text="ФИО" fx:id="fullNameColumn" prefWidth="150"/>
+                <TableColumn text="Дата рождения" fx:id="birthDateColumn" prefWidth="100"/>
+                <TableColumn text="Номер телефона" fx:id="phoneNumberColumn" prefWidth="100"/>
+                <TableColumn text="Email" fx:id="emailColumn" prefWidth="100"/>
+            </columns>
+        </TableView>
+
+        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+            <Button text="Обновить" onAction="#handleRefresh" styleClass="button-refresh"/>
+        </HBox>
+    </VBox>
+</AnchorPane>

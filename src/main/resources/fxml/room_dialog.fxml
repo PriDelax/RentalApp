@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.6"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="rentalapp.Controller.RoomDialogController"
+            prefHeight="400.0" prefWidth="500.0"
+            styleClass="dialog-pane">
+
+    <VBox spacing="15.0" alignment="CENTER">
+        <padding>
+            <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+        </padding>
+        <Label text="Добавить помещение" styleClass="dialog-title"/>
+        <GridPane hgap="10.0" vgap="10.0" alignment="CENTER_LEFT">
+            <Label text="Адрес:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="addressField" promptText="Введите адрес" GridPane.rowIndex="0" GridPane.columnIndex="1" prefWidth="300.0"/>
+            <Label text="Описание:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextArea fx:id="descriptionField" promptText="Введите описание" GridPane.rowIndex="1" GridPane.columnIndex="1" prefWidth="300.0"/>
+            <Label text="Тип:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="typeCombo" GridPane.rowIndex="2" GridPane.columnIndex="1" prefWidth="300.0"/>
+            <Label text="Количество комнат:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+            <Spinner fx:id="roomsNumberSpinner" GridPane.rowIndex="3" GridPane.columnIndex="1" prefWidth="300.0"/>
+            <Label text="Площадь:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+            <Spinner fx:id="squareSpinner" GridPane.rowIndex="4" GridPane.columnIndex="1" prefWidth="300.0"/>
+            <Label text="Статус:" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+            <ComboBox fx:id="statusCombo" GridPane.rowIndex="5" GridPane.columnIndex="1" prefWidth="300.0"/>
+        </GridPane>
+        <HBox spacing="10.0" alignment="CENTER_RIGHT">
+            <Button text="Отмена" onAction="#handleCancel" styleClass="button-secondary"/>
+            <Button text="Сохранить" onAction="#handleSave" styleClass="button-primary"/>
+        </HBox>
+    </VBox>
+</AnchorPane>

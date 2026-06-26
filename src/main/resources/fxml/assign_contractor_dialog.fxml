@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.6"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="rentalapp.Controller.AssignContractorDialogController"
+      spacing="15.0" prefWidth="400.0">
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+    </padding>
+    <Label text="Назначить исполнителя" styleClass="dialog-title"/>
+    <Label text="Заявка:"/>
+    <Label fx:id="requestLabel" wrapText="true" styleClass="info-label"/>
+    <Label text="Исполнитель:"/>
+    <ComboBox fx:id="contractorCombo" prefWidth="350.0"/>
+    <HBox alignment="CENTER_RIGHT" spacing="10.0">
+        <Button text="Отмена" onAction="#handleCancel" styleClass="button-secondary"/>
+        <Button text="Назначить" onAction="#handleAssign" styleClass="button-primary"/>
+    </HBox>
+</VBox>

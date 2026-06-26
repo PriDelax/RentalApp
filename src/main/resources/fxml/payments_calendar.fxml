@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.6"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="rentalapp.Controller.PaymentCalendarController"
+      spacing="10.0" prefWidth="800.0">
+    <HBox alignment="CENTER" spacing="20.0">
+        <Button text="◀" onAction="#previousMonth" styleClass="calendar-nav"/>
+        <Label fx:id="monthYearLabel" text="Июнь 2026" styleClass="month-year"/>
+        <Button text="▶" onAction="#nextMonth" styleClass="calendar-nav"/>
+        <Button text="Сегодня" onAction="#goToToday" styleClass="button-today"/>
+    </HBox>
+    <GridPane fx:id="calendarGrid" styleClass="calendar-grid">
+    </GridPane>
+    <VBox fx:id="dayDetails" visible="false" styleClass="day-details">
+        <Label text="Платежи за день:" styleClass="details-title"/>
+        <ListView fx:id="paymentsList"/>
+    </VBox>
+</VBox>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.6"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="rentalapp.Controller.TenantDashboardController"
+      spacing="20.0">
+
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+    </padding>
+
+    <Label text=" Добро пожаловать!" styleClass="page-title">
+        <font>
+            <Font name="System Bold" size="24.0"/>
+        </font>
+    </Label>
+
+    <HBox spacing="15.0">
+        <VBox styleClass="stat-widget" alignment="CENTER" prefWidth="250.0" prefHeight="120.0">
+            <Label styleClass="stat-icon"/>
+            <Label fx:id="activeAgreementLabel" text="1" styleClass="stat-value"/>
+            <Label text="Активный договор" styleClass="stat-label"/>
+        </VBox>
+
+        <VBox styleClass="stat-widget" alignment="CENTER" prefWidth="250.0" prefHeight="120.0">
+            <Label fx:id="openRequestsLabel" text="0" styleClass="stat-value"/>
+            <Label text="Открытые заявки" styleClass="stat-label"/>
+        </VBox>
+
+        <VBox styleClass="stat-widget" alignment="CENTER" prefWidth="250.0" prefHeight="120.0">
+            <Label fx:id="nextPaymentLabel" text="—" styleClass="stat-value"/>
+            <Label text="Ближайший платёж" styleClass="stat-label"/>
+        </VBox>
+
+    </HBox>
+
+    <VBox spacing="10.0">
+        <Label text=" Последние заявки" styleClass="section-title">
+            <font>
+                <Font name="System Bold" size="18.0"/>
+            </font>
+        </Label>
+
+        <TableView fx:id="recentRequestsTable" prefHeight="300.0">
+            <columns>
+                <TableColumn text="Дата" fx:id="dateColumn" prefWidth="100.0"/>
+                <TableColumn text="Описание" fx:id="descriptionColumn" prefWidth="300.0"/>
+                <TableColumn text="Статус" fx:id="statusColumn" prefWidth="150.0"/>
+            </columns>
+        </TableView>
+    </VBox>
+
+</VBox>

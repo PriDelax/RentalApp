@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<VBox xmlns="http://javafx.com/javafx/17.0.6"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="rentalapp.Controller.TenantRequestsController"
+      spacing="15.0">
+
+    <padding>
+        <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+    </padding>
+
+    <HBox alignment="CENTER_LEFT" spacing="20.0">
+        <Label text="Заявки на ремонт" styleClass="page-title">
+            <font>
+                <Font name="System Bold" size="24.0"/>
+            </font>
+        </Label>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="➕Создать заявку" onAction="#handleCreateRequest" styleClass="button-primary"/>
+    </HBox>
+
+    <HBox alignment="CENTER_LEFT" spacing="10.0">
+        <Label text="Фильтр по статусу:" styleClass="filter-label"/>
+        <ComboBox fx:id="statusFilterCombo" prefWidth="200.0">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Все"/>
+                    <String fx:value="новая"/>
+                    <String fx:value="в работе"/>
+                    <String fx:value="закрыта"/>
+                    <String fx:value="отменена"/>
+                </FXCollections>
+            </items>
+        </ComboBox>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Обновить" onAction="#handleRefresh" styleClass="button-refresh"/>
+    </HBox>
+
+    <TableView fx:id="requestsTable" VBox.vgrow="ALWAYS" styleClass="data-table">
+        <columns>
+            <TableColumn text="Дата создания" fx:id="dateColumn" prefWidth="120.0"/>
+            <TableColumn text="Категория" fx:id="categoryColumn" prefWidth="120.0"/>
+            <TableColumn text="Приоритет" fx:id="priorityColumn" prefWidth="100.0"/>
+            <TableColumn text="Описание" fx:id="descriptionColumn" prefWidth="300.0"/>
+            <TableColumn text="Исполнитель" fx:id="contractorColumn" prefWidth="150.0"/>
+            <TableColumn text="Статус" fx:id="statusColumn" prefWidth="120.0"/>
+            <TableColumn text="Действия" fx:id="actionsColumn" prefWidth="150.0"/>
+        </columns>
+    </TableView>
+
+    <HBox alignment="CENTER" spacing="10.0" styleClass="info-banner">
+        <Label text="ℹ️ Вы можете отменить только заявки со статусом 'новая'"
+               styleClass="info-text"/>
+    </HBox>
+
+</VBox>

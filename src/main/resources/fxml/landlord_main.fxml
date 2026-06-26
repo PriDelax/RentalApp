@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17.0.6"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="rentalapp.Controller.LandlordController"
+            prefHeight="600.0" prefWidth="900.0"
+            styleClass="main-pane">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20.0" styleClass="header">
+            <padding>
+                <Insets top="15.0" right="20.0" bottom="15.0" left="20.0"/>
+            </padding>
+            <Label text="Панель арендодателя" styleClass="header-title">
+                <font>
+                    <Font name="System Bold" size="20.0"/>
+                </font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label fx:id="userNameLabel" text="Пользователь" styleClass="header-user"/>
+            <Button text="🚪Выход" onAction="#handleLogout" styleClass="button-logout"/>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox spacing="10.0" styleClass="sidebar" prefWidth="200.0">
+            <padding>
+                <Insets top="20.0" right="10.0" bottom="20.0" left="10.0"/>
+            </padding>
+            <Button text="Мои помещения" onAction="#showRooms" styleClass="nav-button" prefWidth="180.0" HBox.hgrow="ALWAYS"/>
+            <Button text="Мои договоры" onAction="#showAgreements" styleClass="nav-button" prefWidth="180.0"/>
+            <Button text="Съёмщики" onAction="#showTenants" styleClass="nav-button" prefWidth="180.0"/>
+            <Button text="Исполнители" onAction="#showContractors" styleClass="nav-button" prefWidth="180.0"/>
+            <Button text="Заявки на ремонт" onAction="#showRequests" styleClass="nav-button" prefWidth="180.0"/>
+            <Button text="Финансы" onAction="#showFinance" styleClass="nav-button" prefWidth="180.0"/>
+            <Button text="Профиль" onAction="#showProfile" styleClass="menu-button"/>
+            <Region VBox.vgrow="ALWAYS"/>
+        </VBox>
+    </left>
+
+    <center>
+        <StackPane fx:id="contentArea" styleClass="content-area">
+            <padding>
+                <Insets top="20.0" right="20.0" bottom="20.0" left="20.0"/>
+            </padding>
+            <VBox alignment="CENTER" spacing="20.0">
+                <Label text="Добро пожаловать!" styleClass="welcome-title">
+                    <font>
+                        <Font name="System Bold" size="28.0"/>
+                    </font>
+                </Label>
+                <Label text="Выберите раздел в меню слева" styleClass="welcome-subtitle"/>
+
+                <GridPane hgap="20.0" vgap="20.0" alignment="CENTER">
+                    <padding>
+                        <Insets top="30.0"/>
+                    </padding>
+
+                    <VBox styleClass="stat-card" alignment="CENTER" spacing="10.0" GridPane.columnIndex="0">
+                        <Label fx:id="roomsCountLabel" text="0" styleClass="stat-value"/>
+                        <Label text="Помещений" styleClass="stat-label"/>
+                    </VBox>
+
+                    <VBox styleClass="stat-card" alignment="CENTER" spacing="10.0" GridPane.columnIndex="1">
+                        <Label fx:id="agreementsCountLabel" text="0" styleClass="stat-value"/>
+                        <Label text="Договоров" styleClass="stat-label"/>
+                    </VBox>
+
+                    <VBox styleClass="stat-card" alignment="CENTER" spacing="10.0" GridPane.columnIndex="2">
+                        <Label fx:id="tenantsCountLabel" text="0" styleClass="stat-value"/>
+                        <Label text="Съёмщиков" styleClass="stat-label"/>
+                    </VBox>
+                </GridPane>
+            </VBox>
+        </StackPane>
+    </center>
+</BorderPane>
